@@ -20,7 +20,9 @@ https://www.youtube.com/watch?v=CbfLRCV7oeU&t=8s
 
 - Phone automatic operation
 
-- Pandas / numpy / echarts / flask / websocket
+- Pandas / numpy / pyecharts / flask / websocket
+
+- Vue / w3css / echarts
 
 - More watting for you to explore
 
