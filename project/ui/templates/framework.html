@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href=[[ url_for("static", filename="css/w3.css") ]]>
+    <link rel="stylesheet" href=[[ url_for("static", filename="css/font-awesome.min.css")]]>
+    {% block import_css %}{% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block meta_data %}{% endblock %}
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+</head>
+<style>
+    {% block infile_css %}{% endblock %}
+</style>
+{% block body %} {% endblock %}
+<!-- Vue -->
+<script src=[[ url_for("static", filename="js/vue.js") ]]></script>
+<script src=[[ url_for("static", filename="js/jquery.min.js") ]]></script>
+<script src=[[ url_for("static", filename="js/jquery.tablesorter.min.js") ]]></script>
+{% block import_js %}{% endblock %}
+{% block infile_js %}{% endblock %}
+</html>

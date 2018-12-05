@@ -11,3 +11,11 @@ Scrapy实现高效微信公众号历史文章和阅读数据爬虫
 1. clone the source file to your drive thar you have the right to read and write
 
 2. cd proxy use npm insatll anyproxy and redis, plse make sure you have installed the right version of nodejs that anyproxy need
+
+
+
+## 特别注意
+
+- inorder to proxy https you have to install anyproxy CA in both computer and phone, check anyproxy official page for more infromation
+
+

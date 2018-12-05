@@ -1,0 +1,67 @@
+{% extends "framework.html" %}
+
+{% block title %}
+[[ data['title'] ]]
+{% endblock %}
+
+{% block infile_css %}
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+a:link {
+    text-decoration: none;
+}
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ffc107;
+    margin: 1em 0;
+    padding: 0;
+}
+.fa-1x{
+    font-size:0.8em;
+}
+.fa-2x{
+    font-size:1em;
+}
+.fa-3x{
+    font-size:1.2em;
+}
+.fa-4x{
+    font-size:1.4em;
+}
+.fa-big{
+    font-size:2.4em;
+}
+{% endblock %}
+
+{% block body %}
+<body class="w3-light-gray">
+    {% include "index/header.html" %}
+    {% include "index/menu.html" %}
+    {% include "index/gzh.html" %}
+    {% include "index/crawler.html" %}
+    {% include "index/settings.html" %}
+    {% include "index/utils.html" %}
+</body>
+{% endblock %}
+
+{% block import_js %}
+    <!-- 引入echarts -->
+    <script src=[[ url_for("static", filename="js/echarts.js") ]]></script>
+    <script src=[[ url_for("static", filename="js/echarts-wordcloud.min.js") ]]></script>
+    <!-- socekt.io -->
+    <script src=[[ url_for("static", filename="js/socket.io.js") ]]></script>
+    <!-- 引入websocket数据根更新文件 -->
+    <script src=[[ url_for("static", filename="custom_js/data_update.js") ]]></script>
+    <!-- 引入vue数据绑定文件 -->
+    <script src=[[ url_for("static", filename="custom_js/data_bind.js") ]]></script>
+    <script src=[[ url_for("static", filename="custom_js/ui_interact.js") ]]></script>
+    <script src=[[ url_for("static", filename="custom_js/post.js") ]]></script>
+{% endblock %}

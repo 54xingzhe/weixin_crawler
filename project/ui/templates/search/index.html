@@ -1,0 +1,112 @@
+{% extends "framework.html" %}
+
+{% block title %}
+[[ data['title'] ]]
+{% endblock %}
+
+{% block infile_css %}
+    a:link {
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #0062cc;
+    }
+
+    .unselectable {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+{% endblock %}
+
+{% block body %}
+<body>
+<div class="w3-container w3-light-gray">
+    <div class="w3-row" style="height: 100px; padding: 30px; padding-left: 0px">
+        <img class="w3-left" src=[[ url_for("static", filename="img/aii.png") ]] style="height: 40px; padding-left: 20px;padding-right: 20px">
+        <input id="search_input" class="w3-left w3-input w3-border w3-round-small" type="text" style="width: 700px;margin-left: 20px">
+    </div>
+</div>
+
+<div id="vm-app-search-result-data" class="w3-container" style="margin-left: 120px">
+
+    <div class="unselectable w3-row w3-margin-top w3-margin-bottom w3-text-gray">
+        <span>{{ result['total'] }}条结果</span>
+        <span class="w3-padding-small w3-blue w3-round" id="search_setting_btn"><i class="fa fa-gear"></i>搜索设置</span>
+        <span class="w3-padding-small w3-green w3-round" id="search_result_index_btn"><i class="fa fa-bar-chart"></i>结果指数</span>
+    </div>
+    <div id="search_result_index_chart" class="w3-container w3-border" style="display: none;margin-bottom: 10px;width: 700px; height: 300px"></div>
+    <div v-for="r in result['data']" class="search_result w3-row w3-margin-bottom" style="width: 700px">
+        <h5 style="color: #1a0dab"><a :href="r.content_url" target="_blank">{{ r['title'] }}</a></h5>
+        <span class="w3-light-grey">{{ r['nickname'] }}</span>
+        <span class="w3-light-grey">{{ r['author'] }}</span>
+        <span class="w3-light-grey">{{ r['p_date'] }}</span>
+        <!--<p><a v-html="r.highlight" :href="r.content_url" target="_blank"></a></p>-->
+        <p v-html="r.highlight"></p>
+    </div>
+
+    <div class="w3-row w3-display-container" style="margin-top: 30px; width: 700px">
+        <div class="w3-container w3-display-middle">
+            <span id="pre_page" class="w3-button">上一页</span>
+            <span id="pages_info">0/0</span>
+            <span id="next_page" class="w3-button">下一页</span>
+        </div>
+    </div>
+</div>
+
+<div class="w3-container w3-light-grey w3-margin-top" style="height: 100px">
+</div>
+
+<div id="search_setting_pannel" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-top" style="max-width:600px">
+        <div class="w3-container w3-row">
+            <h5>搜索范围</h5>
+            <hr>
+            <div class="w3-row">
+                <div class="w3-quarter">
+                    <div id="search_range_select_combine">
+                        <select class="w3-select w3-light-grey w3-round w3-border-0" name="option">
+                            <option>公众号</option>
+                            <option>类别</option>
+                        </select>
+                        <select class="w3-margin-top w3-select w3-light-grey w3-round w3-border-0" name="option">
+                            <option disabled>添加项</option>
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="w3-threequarter">
+                    <div id="search_range_elements" class="w3-margin-left">
+                        <span class="element-tag w3-tag w3-orange w3-text-white w3-round-large" style="padding: 2px;margin: 2px">爱迪斯1</span>
+                        <span class="element-tag w3-tag w3-orange w3-text-white w3-round-large" style="padding: 2px;margin: 2px">爱迪斯2</span>
+                        <span class="element-tag w3-tag w3-orange w3-text-white w3-round-large" style="padding: 2px;margin: 2px">爱迪斯3</span>
+                        <span class="element-tag w3-tag w3-orange w3-text-white w3-round-large" style="padding: 2px;margin: 2px">爱迪斯4</span>
+                        <span class="element-tag w3-tag w3-orange w3-text-white w3-round-large" style="padding: 2px;margin: 2px">爱迪斯5</span>
+                        <span class="element-tag w3-tag w3-orange w3-text-white w3-round-large" style="padding: 2px;margin: 2px">爱迪斯6</span>
+                        <span class="element-tag w3-tag w3-orange w3-text-white w3-round-large" style="padding: 2px;margin: 2px">爱迪斯7</span>
+                        <span class="element-tag w3-tag w3-orange w3-text-white w3-round-large" style="padding: 2px;margin: 2px">爱迪斯8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w3-container w3-margin-top w3-row w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="$('#search_setting_pannel').hide()" type="button" class="w3-button w3-green w3-right"><i class="fa fa-smile-o"></i> 完成</button>
+        </div>
+
+    </div>
+</div>
+
+</body>
+{% endblock %}
+
+{% block import_js %}
+<script src=[[ url_for("static", filename="js/socket.io.js") ]]></script>
+<script src=[[ url_for("static", filename="js/echarts.js") ]]></script>
+<script src=[[ url_for("static", filename="custom_js/search/result.js") ]]></script>
+<script src=[[ url_for("static", filename="custom_js/search/settings.js") ]]></script>
+{% endblock %}

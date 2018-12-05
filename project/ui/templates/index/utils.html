@@ -1,0 +1,43 @@
+<div id="excel_option" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+        <div class="w3-center"><br>
+            <span onclick="$('#excel_option').hide()" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
+            <p class="w3-text-green fa-big"> Export to Excel</p>
+        </div>
+
+        <form id="gen_excel_data" class="w3-container">
+            <div class="w3-section">
+                <div class="w3-row">
+                    <input id="excel_nickname" name="excel_nickname" class="w3-input fa-3x" type="text">
+                </div>
+                <div class="w3-row">
+                    <div class="w3-third w3-border-right">
+                        <input value="Y" name="title_cnt" class="w3-check w3-margin" type="checkbox" checked="checked">标题<hr>
+                        <input value="Y" name="author" class="w3-check w3-margin" type="checkbox" checked="checked">作者<hr>
+                        <input value="Y" name="date" class="w3-check w3-margin" type="checkbox" checked="checked">发文时间<hr>
+                        <input value="Y" name="digest_cnt" class="w3-check w3-margin" type="checkbox">摘要<hr>
+                    </div>
+                    <div class="w3-third w3-border-right">
+                        <input value="Y" name="read" class="w3-check w3-margin" type="checkbox" checked="checked">阅读量<hr>
+                        <input value="Y" name="like" class="w3-check w3-margin" type="checkbox" checked="checked">点赞量<hr>
+                        <input value="Y" name="reward" class="w3-check w3-margin" type="checkbox" checked="checked">赞赏量<hr>
+                        <input value="Y" name="comment" class="w3-check w3-margin" type="checkbox" checked="checked">评论量<hr>
+                    </div>
+                    <div class="w3-third">
+                        <input value="Y" name="mov" class="w3-check w3-margin" type="checkbox">仅主文章<hr>
+                        <input value="Y" name="content_url" class="w3-check w3-margin" type="checkbox">文章链接<hr>
+                        <input value="Y" name="source_url" class="w3-check w3-margin" type="checkbox">原文链接<hr>
+                        <input value="Y" name="pic" class="w3-check w3-margin" type="checkbox">插图数<hr>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="$('#excel_option').hide()" type="button" class="w3-button w3-red"><i class="fa fa-remove"></i> 取消</button>
+            <button id="gen_excel_btn" type="button" class="w3-button w3-green w3-right"><i class="fa fa-yelp"></i> 生成</button>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div id="settings-menu" class="w3-main" style="display:none; margin-left:15%;margin-top:43px;">
+
+    <header class="w3-container" style="padding-top:22px">
+        <h5><b><i class="fa fa-gear"></i> 设置</b></h5>
+    </header>
+    <!--公众号类别-->
+    <div class="w3-container">
+        <div class="w3-blue w3-padding w3-margin-bottom">
+            <span>公众号分类</span>
+            <span class="w3-right"><input id="add-gzh-category-btn" style="padding-left: 5px" class="w3-border-0 w3-round-small" type="text" placeholder=输入新类别回车确认></span>
+        </div>
+        <div id="vm-app-gzh-category-data">
+            <div v-for="cat in category" class="w3-padding-small w3-quarter w3-margin-bottom">
+            <div class="w3-container w3-card w3-white w3-round w3-padding">
+                <div class="w3-row">
+                    <div class="w3-display-container w3-margin-bottom">
+                        <h3 class="w3-display-left">{{ cat['cat_name'] }}</h3>
+                        <button :data-category="cat.cat_name" title="双击删除分类" class="delete-gzh-category-btn w3-round w3-border-0 w3-margin-top w3-display-right w3-red"><i class="fa fa-close"></i></button>
+                    </div>
+                </div>
+                <div class="w3-row w3-margin-top">
+                    <span v-for="name in cat.cat_members" title="双击移出分类" :data-category="cat.cat_name" class="gzh_tag_remove w3-tag w3-round w3-blue w3-center" style="margin: 2px">{{ name }}</span>
+                    <select class="gzh_tag_add w3-margin-top w3-select w3-light-grey w3-round w3-border-0" name="option">
+                        <option value="" disabled selected>增加公众号</option>
+                        <option v-for="name in cat.cat_available" :data-category="cat.cat_name">{{ name }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

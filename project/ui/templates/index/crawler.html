@@ -1,0 +1,55 @@
+<div id="crawler-menu" class="w3-main" style="display:none; margin-left:15%;margin-top:43px;">
+
+    <header class="w3-container" style="padding-top:22px">
+        <h5><b><i class="fa fa-eye"></i> 采集</b></h5>
+    </header>
+
+    <div class="w3-container">
+        <div id="vm-app-phone-crawler-data" class="w3-half">
+            <div class="w3-red w3-padding-small w3-margin-bottom"><span>爬虫状态</span></div>
+            <div v-for="crawler in crawlers" class="w3-padding-small w3-third w3-margin-bottom">
+                <!--<img src="img/web-crawlers.jpg" alt="Norway" style="width:100%">-->
+                <div class="w3-container w3-card w3-white w3-round">
+                    <h3>{{ crawler['nick_name'] }}</h3>
+                    <h6 class="w3-opacity"><i class="fa fa-rocket"></i> {{ crawler['adb_port'] }}</h6>
+                    <h6 class="w3-opacity"><i class="fa fa-wechat"></i> {{ crawler['wxuin'] }}</h6>
+                    <button class="phone_crawler_delete w3-button w3-tiny w3-block w3-orange w3-margin-bottom"><i class="fa fa-close"></i> DELETE</button>
+                </div>
+            </div>
+            <form id="phone_crawler_add_form">
+                <div class="w3-row w3-margin-top w3-margin-bottom">
+                    <div class="w3-threequarter w3-container" style="padding-left: 8px">
+                        <input name="phone" class="w3-input w3-border w3-round-large" type="text" placeholder="ABD端口 例如127.0.0.1:62001">
+                    </div>
+                    <div class="w3-quarter w3-container">
+                        <button value="add" class="phone_crawler_add_btn w3-btn w3-red w3-right w3-round-large">添加爬虫</button>
+                    </div>
+                </div>
+            </form>
+            <div class="w3-container">
+
+            </div>
+        </div>
+        <div class="w3-half">
+            <div class="w3-green w3-padding-small"><span>当前文章采集状态</span></div>
+            <table id="vm-app-articles-logger-monitoring" class="w3-table w3-striped w3-white">
+                <tbody>
+                <tr>
+                    <th><i class="fa fa-user w3-text-blue w3-large"></i> 公众号</th>
+                    <th><i class="fa fa-percent w3-text-amber w3-large"></i> 完成率</th>
+                    <th><i class="fa fa-rocket w3-text-red w3-large"></i> more</th>
+                    <th><i class="fa fa-list w3-text-purple w3-large"></i> 标题</th>
+                </tr>
+                <tr v-for="article in articles">
+                    <td>{{ article['nickname'] }}</td>
+                    <td><i>{{ article['percent'] }}</i></td>
+                    <td><i>{{ article['more'] }}</i></td>
+                    <td>{{ article['title'] }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>

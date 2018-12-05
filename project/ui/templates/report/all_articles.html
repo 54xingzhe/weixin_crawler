@@ -1,0 +1,71 @@
+{% extends "framework.html" %}
+
+{% block title %}
+[[ data['title'] ]]
+{% endblock %}
+
+{% block infile_css %}
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+    color: red;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+{% endblock %}
+
+{% block body %}
+<body>
+    <div class="w3-panel">
+        <table class="w3-table w3-striped w3-white">
+            <thead class="w3-sand">
+            <tr>
+                <th><i class="fa fa-user w3-text-green w3-large"></i> 编号</th>
+                <th><i class="fa fa-clock-o w3-text-green w3-large"></i> 发布时间</th>
+                <th><i class="fa fa-eye w3-text-green w3-large"></i> 阅读</th>
+                <th><i class="fa fa-heart w3-text-green w3-large"></i> 点赞</th>
+                <th><i class="fa fa-dollar w3-text-green w3-large"></i> 赞赏</th>
+                <th><i class="fa fa-list w3-text-green w3-large"></i> 评论</th>
+                <th><i class="fa fa-user w3-text-green w3-large"></i> 作者</th>
+                <th><i class="fa fa-building w3-text-green w3-large"></i> 位置</th>
+                <th><i class="fa fa-file-text w3-text-green w3-large"></i> 标题</th>
+            </tr>
+            </thead>
+            <tbody id="">
+            {% for article in data['articles'] %}
+            <tr>
+                <td>[[ article['article_id'] ]]</td>
+                <td>[[ article['p_date'] ]]</td>
+                <td>[[ article['read_num'] ]]</td>
+                <td>[[ article['like_num'] ]]</td>
+                <td>[[ article['reward_num'] ]]</td>
+                <td>[[ article['comment_num'] ]]</td>
+                <td>[[ article['author'] ]]</td>
+                <td>[[ article['mov'] ]]</td>
+                <td><a href="[[ article['content_url'] ]]" target="_blank">[[ article['title'] ]]</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+{% endblock %}
+
+{% block infile_js %}
+<script>
+    // 支持点击标题排序
+    $(function() {
+        $("table")
+            .tablesorter({debug: false})
+    });
+</script>
+{% endblock %}

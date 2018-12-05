@@ -1,0 +1,175 @@
+{% extends "framework.html" %}
+
+{% block title %}
+[[ data['title'] ]]
+{% endblock %}
+
+{% block body %}
+<body>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-text-yellow w3-black w3-padding" id='total_posts_num'></h5>
+    </div>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-black">名词解释</h5>
+        <p><span class="w3-text-green">主/副文章：</span>公众号单次发送文章为1+7模式。即，1篇主文章和最多7篇副文章。通常主文章是本次推送的主角，运营者在主文章上倾注的期待也最大。</p>
+        <p><span class="w3-text-green">深度指数：</span>一篇文章的点赞量除以其阅读量即为该文章的深度指数，为了避免深度指数是很小的小数，最后将结果再乘以1000并保留小数点后两位数字。解读：深度指数直观上来看是点赞量占阅读量的比例，再放大1000倍，指数越高说明有更大比例的读者认为文章有“深度”。</p>
+        <p><span class="w3-text-green">落差指数：</span>上一篇文章的阅读量除以本次文章的阅读量在将商乘以1000并保留两位小数，指数越小说明本次阅读量涨幅越大，背后的原因值得探索。落差指数大则说明一个反向事实。</p>
+        <p><span class="w3-text-green">评论量：</span>评论量并非文章末尾精选留言的数量，而是所有评论总数，一般要大于精选评论数量。公众号早期可能并未开通留言功能，故有很多公众号早期的评论量都是0.</p>
+        <p><span class="w3-text-green">阅读数据：</span>阅读数据是读者为文章增加信息的统称，包括阅读量、点赞量、赞赏量、评论量。</p>
+        <p><span class="w3-text-green">中位数：</span>将一串数字按大小排序后，中间位置的数或者中间两个数的平均数即为中位数。</p>
+    </div>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-black">表1 历史主文章阅读数据</h5>
+        <p>统计对象：仅主文章</p>
+        <p>横坐标：发文日期，越往右越时间越早。最右端即为第一篇主文章的发布日期，最左即为统计中最近的主文章发送日期，除横坐标之外，有三条水平线分别代表窗口内的最大值、算术平均值、最小值（下同）</p>
+        <p>纵坐标：通过点击表格上方小长方形色块指定，可多选，由于各数据可能不在同一个数量级，如果多选会导致数量级小的数据被“淹没”，建议单选逐一分析</p>
+        <p>说明：表格容纳了每一篇文章的阅读数据，支持缩放和图片保存。缩小到全局视野之后能清楚地看到公众号的初创期、成长期、成熟期、衰退期、起伏波动。运营者结合实际的运营策略能看清楚各阶段的运营成绩，如果有大量的10W+文章撑破了阅读上限，建议使用点赞量作为分析依据</p>
+        <div id='all_mian_date_read' style="width: 100%;height:600px;"></div>
+    </div>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-black">表2 主副文章各自总体统计数据</h5>
+        <p>统计对象：主、副文章分别统计</p>
+        <p>横坐标：主副类别，10为主文章，11~17为副文章</p>
+        <p>纵坐标：阅读量、点赞量、评论量各自的中位数、平均数（算术平均数）、最大值</p>
+        <p>说明：如果副文章阅读回报过低可考虑减少副文章数量，将精力转移到主文章之上，应该调整哪些位置的副文章正是该表所要表达的信息</p>
+        <div id='all_statistic' style="width: 100%;height:600px;"></div>
+    </div>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-black">表3 不同主副、星期、小时内发文总数</h5>
+        <p>统计对象：主副文章一起统计</p>
+        <p>横坐标：三张表格分别对应着文章不同的主副、不同的发布星期(1表示周一，7表示周日)、不同的发布小时</p>
+        <p>纵坐标：文章数量</p>
+        <p>说明：主副各自相对文章数量表明运营主体的发文量，一般来说营销号主副文章数量比较均衡，自媒体原创内容公众号较少出现副文章。星期作为工作和休息的周期，统计不同星期的发文数量能表达出运营者对星期周期的拟合度。一天24小时是作息的周期，发文小时表达了运营者对目标读者作息时间的拟合。</p>
+
+        <div class="w3-row">
+            <div class="w3-half">
+                <div id='dir_posts_num_related_mov' style="width:100%; height:300px;"></div>
+            </div>
+            <div class="w3-half">
+                <div id='dir_posts_num_related_week' style="width:100%; height:300px;"></div>
+            </div>
+        </div>
+        <div class="w3-row">
+            <div id='dir_posts_num_related_hour' style="width:100%; height:300px;"></div>
+        </div>
+    </div>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-black">表4 阅读量和点赞量、文章词数、上次阅读量的相关性</h5>
+        <p>统计对象：仅主文章</p>
+        <p>横坐标：三张表格的横坐标均为本次文章的阅读量</p>
+        <p>纵坐标：左上图为点赞量，右上图为文章词数，下图为上一篇主文章的阅读量</p>
+        <p>说明：点赞量和阅读量呈现出明显的线性关系说明文章的标题和实际内容有良好的一致性（非标题党），阅读量很高而点赞量很低，说明读者是被标题或者封面和摘要吸引进来，后面使用深度指数来刻画。文章词数间接反映出了原创内容创作的时间成本，创作时间越长阅读量是否会越高？后面使用容易指数来刻画。如果上一篇文章的阅读量很低而本次很高，可能是因为采取哪些有效的推广方法或者文章内容更受欢迎，反之说明本次文章质量所有回落，后面使用落差指数刻画</p>
+        <div class="w3-row">
+            <div class="w3-half">
+                <div id='read_vs_like' style="width:100%; height:400px;"></div>
+            </div>
+            <div class="w3-half">
+                <div id='read_vs_pre_read' style="width:100%; height:400px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-black">表5 探索最佳发布小时</h5>
+        <p>统计对象：主副文章一起统计</p>
+        <p>横坐标：发布小时</p>
+        <p>纵坐标：根据选定的数据不同，分别代表该小时内的累计发文总数，该小时内所有文章的平均阅读量，该小时内所有文章阅读数数量的中位数</p>
+        <p>说明：最合适的发文小时并非看起来发文数量最多的那个小时，而是阅读量的中位数或者平均数最高的那个小时，该图标正在揭示这个“秘密”，运营者可以此调整发文时间</p>
+        <div class="w3-row">
+            <div id='read_vs_hour' style="width:100%; height:400px;"></div>
+        </div>
+    </div>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-black">表6 发布星期和阅读量的关系</h5>
+        <p>统计对象：主副文章一起统计</p>
+        <p>横坐标：发布星期，0代表星期一，1代表星期二以此类推</p>
+        <p>纵坐标：根据选定的数据不同，分别代表该星期内的累计发文总数，该星期内所有文章的平均阅读量，该星期内所有文章阅读数数量的中位数</p>
+        <p>说明：该图表和“探索最佳发布小时”的统计方法类似，但其目的不是为了找出最佳的发布星期（服务号可以这样处理）。不管是星期几，订阅号天天都要发文章，可以考虑将那些质量高、重要的文章放在阅读量中位数或平均数高得星期发布</p>
+        <div class="w3-row">
+            <div id='read_vs_week' style="width:100%; height:400px;"></div>
+        </div>
+    </div>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-black">表7 标题词数和阅读量的关系</h5>
+        <p>统计对象：主副文章一起统计</p>
+        <p>横坐标：标题的词数</p>
+        <p>纵坐标：根据选定的数据不同，分别代表该标题词数下的累计发文总数，该标题词数下所有文章的平均阅读量，该标题词数下所有文章阅读数数量的中位数</p>
+        <p>说明：找出最合适的标题词数</p>
+        <div class="w3-row">
+                <div id='read_vs_title' style="width:100%; height:400px;"></div>
+        </div>
+    </div>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-black">表8 文章插图数和阅读量的关系</h5>
+        <p>统计对象：主副文章一起统计</p>
+        <p>横坐标：文章的插图数（包括了广告、格式、排版性质的所有图片）</p>
+        <p>纵坐标：根据选定的数据不同，分别代表该文章插图数下的累计发文总数，该文章插图数下所有文章的平均阅读量，该文章插图数下所有文章阅读数数量的中位数</p>
+        <p>说明：找出最合适的文章插图数</p>
+        <div class="w3-row">
+            <div id='read_vs_pic' style="width:100%; height:400px;"></div>
+        </div>
+    </div>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-black">表9 文章视频数量和阅读量的关系</h5>
+        <p>统计对象：主副文章一起统计</p>
+        <p>横坐标：文章嵌入的视频数</p>
+        <p>纵坐标：根据选定的数据不同，分别代表该文章嵌入的视频数下的累计发文总数，该文章嵌入的视频数下所有文章的平均阅读量，该文章嵌入的视频数下所有文章阅读数数量的中位数</p>
+        <p>说明：由于绝大部分的文章都没有视频，即便有视频基本上也只有一个，该表格可能仅仅适合特特定类型的公众号</p>
+        <div class="w3-row">
+                <div id='read_vs_video' style="width:100%; height:400px;"></div>
+        </div>
+    </div>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-black">表10 10万加文章除外阅读量最高的10篇文章</h5>
+        <p class='w3-text-green'>统计对象：主副文章一起统计</p>
+        <p class='w3-text-green'>说明：它们是重点栽培对象，分析出它们没能过10万的原因，获得经验。点击标题可直接打开该文章，可复制链接发送到手机查看文章的阅读数据（下同）</p>
+        <div class="w3-row">
+            <div id='particular_most_read_10_except_100001'></div>
+        </div>
+    </div>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-black">表11 阅读量最低且为非0的10篇文章</h5>
+        <p class='w3-text-green'>统计对象：仅主文章</p>
+        <p class='w3-text-green'>说明：阅读量非0说明文章已经传播出去，但他们最低应该有其原因，不过它们大多出现在公众号运营初期</p>
+        <div class="w3-row">
+            <div id='particular_least_read_10_except_0'></div>
+        </div>
+    </div>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-black">表12 深度指数最高的10篇文章</h5>
+        <p class='w3-text-green'>统计对象：仅主文章</p>
+        <p class='w3-text-green'>说明：他们是读者最喜爱的10篇文章，也是读者认为最有深度的10篇文章</p>
+        <div class="w3-row">
+            <div id='particular_most_deep_10'></div>
+        </div>
+    </div>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-black">表13 深度指数最低的10篇文章</h5>
+        <p class='w3-text-green'>统计对象：仅主文章</p>
+        <p class='w3-text-green'>说明：他们是读者认为“标题党”性质最严重的10篇文章</p>
+        <div class="w3-row">
+            <div id='particular_least_deep_10'></div>
+        </div>
+    </div>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-black">表14 落差指数最低的10篇文章</h5>
+        <p class='w3-text-green'>统计对象：仅主文章</p>
+        <p class='w3-text-green'>说明：他们是最黑的10匹黑马，背后往往是内容发生质的改变或者推广力度加大，是最强劲的10大突破</p>
+        <div class="w3-row">
+            <div id='particular_least_fall_10'></div>
+        </div>
+    </div>
+    <div class="w3-container w3-border w3-margin">
+        <h5 class="w3-black">表15 所有的10万加文章</h5>
+        <p class='w3-text-green'>统计对象：主副文章一起统计</p>
+        <p class='w3-text-green'>说明：10万加是一个坎，能过去的都不简单，数量阅读实力越强</p>
+        <div id='particular_all_10001'></div>
+    </div>
+</body>
+{% endblock %}
+
+
+{% block import_js %}
+<script src=[[ url_for("static", filename="js/echarts.js") ]]></script>
+<script src=[[ url_for("static", filename="js/echarts-wordcloud.min.js") ]]></script>
+<script src=[[ url_for("static", filename=data.js) ]]></script>
+{% endblock %}

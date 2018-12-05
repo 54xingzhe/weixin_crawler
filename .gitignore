@@ -1,2 +1,12 @@
 proxy/node_modules/
 proxy/package-lock.json
+.idea/
+
+*.pyc
+*.png
+*.bat
+*.txt
+cache_*.js
+screen_cap.pn*
+
+dump.rdb

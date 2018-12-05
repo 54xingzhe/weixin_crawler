@@ -1,0 +1,77 @@
+<div id="gzh-menu" class="w3-main" style="display:block; margin-left:15%;margin-top:43px;">
+
+    <header class="w3-container" style="padding-top:22px">
+        <h5><b><i class="fa fa-list"></i> 公众号</b></h5>
+    </header>
+    <div class="w3-container">
+        <div>
+            <h5 class="w3-green">正在进行</h5>
+            <table class="w3-table w3-striped w3-white">
+                <thead class="w3-sand">
+                <tr>
+                    <th><i class="fa fa-user w3-text-blue w3-large"></i> 公众号</th>
+                    <th><i class="fa fa-percent w3-text-amber w3-large"></i> 完成率</th>
+                    <th><i class="fa fa-clock-o w3-text-red w3-large"></i> 开始时间</th>
+                    <th><i class="fa fa-clock-o w3-text-green w3-large"></i> 尚需时间</th>
+                </tr>
+                </thead>
+                <tbody id="vm-app-gzhs-todolist-data">
+                <tr v-for="gzh in gzhs">
+                    <td>{{ gzh['nickname'] }}</td>
+                    <td>{{ gzh['percent'] }}</td>
+                    <td>{{ gzh['begin_time'] }}</td>
+                    <td>{{ gzh['need_time'] }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="w3-card w3-margin-top w3-sand">
+            <form id="add_gzh_from">
+                <div class="w3-row">
+
+                    <div class="w3-quarter w3-panel">
+                        <input title="确保手机已经设置代理" class="w3-input w3-border w3-round" name="nickname" type="text" placeholder="公众号名称 请确保已经关注该公众号">
+                    </div>
+
+                    <div class="w3-half w3-panel">
+                        <input class="w3-margin-left w3-check" name="aom" value="auto" type="radio"><label>自动</label>
+                        <input class="w3-margin-left w3-check" name="aom" value="halfauto" type="radio"><label>半自动</label>
+                        <input class="w3-margin-left w3-check" name="aom" value="hand" type="radio" checked><label>手动</label>
+                        <span class="w3-text-orange">|</span>
+                        <input class="w3-margin-left w3-check" title="很快 大约几分钟" name="range" value="1" type="radio"><label>仅标题</label>
+                        <input class="w3-margin-left w3-check" title="快 大约十几分钟" name="range" value="2" type="radio" checked><label>含文章</label>
+                        <input class="w3-margin-left w3-check" title="很慢 大约几小时" name="range" value="3" type="radio"><label>含阅读数据</label>
+                    </div>
+
+
+                    <div class="w3-quarter w3-panel">
+                        <button value="add_gzh" id="add_gzh_btn" class="w3-right w3-round-large w3-btn w3-green"><i class="fa fa-plus"> 添加公众号</i></button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <div id="vm-app-gzhs-list-data">
+            <h5 class="w3-teal">已经完成 Total <span class="w3-text-yellow">{{gzhs['meta']['total_gzh']}}</span> have <span class="w3-text-yellow">{{gzhs['meta']['total_article']}}</span> articles</h5>
+            <table class="w3-table w3-striped w3-white">
+                <thead class="w3-sand">
+                <tr>
+                    <th><i class="fa fa-user w3-text-blue w3-large"></i> 公众号</th>
+                    <th><i class="fa fa-list w3-text-amber w3-large"></i> 文章总数</th>
+                    <th><i class="fa fa-clock-o w3-text-red w3-large"></i> 更新时间</th>
+                    <th><i class="fa fa-calculator w3-text-green w3-large"></i> 更新数量</th>
+                    <!--<th><i class="fa fa-list w3-text-green w3-large"></i> 分类</th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="gzh in gzhs['data']">
+                    <td title="单击查看公众号报告"><a target="_blank" v-bind:href="'http://localhost:5000/gzh_report/'+gzh.nickname+''">{{ gzh['nickname'] }}</td>
+                    <td title="点击查看文章列表"><a title="查看全部文章列表" target="_blank" v-bind:href="'http://localhost:5000/gzh_article_list/'+gzh.nickname+''">{{ gzh['article_num'] }}</a></td>
+                    <td>{{ gzh['update_time'] }}</td>
+                    <td>{{ gzh['update_num'] }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
