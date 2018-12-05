@@ -12,7 +12,7 @@ https://www.youtube.com/watch?v=CbfLRCV7oeU&t=8s
 
 - Python3.6
 
-- Scrapy
+- Scrapy(some extra codes are added to Scrapy source code)
 
 - Mongodb / redis / elasticsearch
 
