@@ -4,10 +4,9 @@ scratch/
 .idea/
 
 *.pyc
-*.png
 *.bat
 *.txt
 cache_*.js
-screen_cap.pn*
+screen_*.png
 
 dump.rdb
