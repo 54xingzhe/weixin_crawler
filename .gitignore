@@ -1,5 +1,6 @@
 proxy/node_modules/
 proxy/package-lock.json
+scratch/
 .idea/
 
 *.pyc
