@@ -1,0 +1,14 @@
+scrapy
+twisted
+pywin32
+flask
+flask_socketio
+gevent
+pymongo
+redis
+elasticsearch
+Pillow
+numpy
+pandas
+pyecharts
+pypinyin

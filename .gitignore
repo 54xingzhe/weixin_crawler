@@ -5,7 +5,6 @@ scratch/
 
 *.pyc
 *.bat
-*.txt
 cache_*.js
 screen_*.png
 
