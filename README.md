@@ -1,8 +1,8 @@
 ## What is weixin_crawler?
 
-weixin_crawler是一款使用Scrapy、Flask、Echarts、Elasticsearch等实现的微信公众号文章爬虫，自带分析报告和全文检索功能，几百万的文档都能瞬间搜索。weixin_crawler设计的初衷是尽可能多、尽可能快地爬取微信公众的历史发文。
+weixin_crawler是一款使用Scrapy、Flask、Echarts、Elasticsearch等实现的微信公众号文章爬虫，自带分析报告和全文检索功能，几百万的文档都能瞬间搜索。weixin_crawler设计的初衷是尽可能多、尽可能快地爬取微信公众的历史发文
 
-如果你想先看看这个项目是否有趣，这段几分钟的介绍视频一定是你需要的：
+如果你想先看看这个项目是否有趣，这段不足3分钟的介绍视频一定是你需要的：
 
 https://www.youtube.com/watch?v=CbfLRCV7oeU&t=8s
 
@@ -56,7 +56,7 @@ https://www.youtube.com/watch?v=CbfLRCV7oeU&t=8s
 > 
 > 3. install anyproxy https CA in both computer and phone side
 > 
-> 4. if you are not sure how to use anyproxy, [here ](https://github.com/alibaba/anyproxy)is the doc
+> 4. if you are not sure how to use anyproxy, [here ](https://github.com/alibaba/anyproxy)is the doc
 > 
 > #### Install the needed python packages
 > 
@@ -68,11 +68,11 @@ https://www.youtube.com/watch?v=CbfLRCV7oeU&t=8s
 > 
 > 1. scrapy Python36\Lib\site-packages\scrapy\http\request\ \__init\__.py  --> weixin_crawler\source_code\request\\__init\__.py
 > 
-> 2. scrapy Python36\Lib\site-packages\scrapy\http\response\ \__init\__.py --> weixin_crawler\source_code\response\\\__init\__.py
+> 2. scrapy Python36\Lib\site-packages\scrapy\http\response\ \__init\__.py --> weixin_crawler\source_code\response\\\__init\__.py
 > 
 > 3. pyecharts Python36\Lib\site-packages\pyecharts\base.py --> weixin_crawler\source_code\base.py. In the case function get_echarts_options is added in line 106
 > 
-> #### If you want weixin_crawler work automatically those steps are necessary or you shoud operate the phone to get the request data that will be detected by Anyproxy manual
+> #### If you want weixin_crawler work automatically those steps are necessary or you shoud operate the phone to get the request data that will be detected by Anyproxy manual
 > 
 > 1. Install abd and add it to your path(windows for example)
 > 
@@ -86,13 +86,11 @@ https://www.youtube.com/watch?v=CbfLRCV7oeU&t=8s
 > 
 > In this long step list you may get stucked, join our community for help, tell us what you have done and what kind of error you have found.
 > 
-> Let's go to explore the world in localhost:5000 together
-
-
+> Let's go to explore the world in localhost:5000 together
 
 ## UI界面
 
-公众号界面
+![readme_img\2](readme_img\2.gif)
 
 爬虫界面
 
