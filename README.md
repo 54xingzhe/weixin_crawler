@@ -106,12 +106,14 @@ UI主界面
 
 ![ ](readme_img/设置.png)
 
-文章列表
+公众号历史文章列表
 
-
+![ ](readme_img/历史文章列表.gif)
 
 报告
 
+![ ](readme_img/报告.gif)
+
 搜索
 
-## 
+![ ](readme_img/搜索.gif)
