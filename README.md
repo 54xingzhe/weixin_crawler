@@ -70,7 +70,7 @@ https://www.youtube.com/watch?v=CbfLRCV7oeU&t=8s
 > 
 > 2. scrapy Python36\Lib\site-packages\scrapy\http\response\ \__init\__.py --> weixin_crawler\source_code\response\\\__init\__.py
 > 
-> 3. pyecharts Python36\Lib\site-packages\pyecharts\base.py --> weixin_crawler\source_code\base.py. In the case function get_echarts_options is added in line 106
+> 3. pyecharts Python36\Lib\site-packages\pyecharts\base.py --> weixin_crawler\source_code\base.py. In this case function get_echarts_options is added in line 106
 > 
 > #### If you want weixin_crawler work automatically those steps are necessary or you shoud operate the phone to get the request data that will be detected by Anyproxy manual
 > 
@@ -94,7 +94,7 @@ UI主界面
 
 ![1](readme_img/爬虫主界面.gif)
 
-添加公众号爬取任务和已经破去的公众号列表
+添加公众号爬取任务和已经爬取的公众号列表
 
 ![1](readme_img/公众号.png)
 
@@ -146,6 +146,6 @@ weixin_crawler从2018年6月份就开始利用业余时间开发（居然用了�
 
 - 加入知识星球听作者将weixin_crawler的每一个函数和每一个问题解决的思维过程娓娓道来，你会因此认识更多意志坚定的开发者
 
-| 作者微信                    | 加入知识星球                    | 打赏作者                    |
+| 作者微信(备注请以wc开头)          | 加入知识星球                    | 打赏作者                    |
 | ----------------------- | ------------------------- | ----------------------- |
 | ![ ](readme_img/wq.jpg) | ![ ](readme_img/知识星球.png) | ![ ](readme_img/打赏.png) |
