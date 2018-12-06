@@ -90,7 +90,9 @@ https://www.youtube.com/watch?v=CbfLRCV7oeU&t=8s
 
 ## UI界面
 
-![readme_img\2](readme_img\2.gif)
+UI主界面
+
+![1](readme_img/爬虫主界面.gif)
 
 爬虫界面
 
