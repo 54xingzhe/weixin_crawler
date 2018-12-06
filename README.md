@@ -94,11 +94,21 @@ UI主界面
 
 ![1](readme_img/爬虫主界面.gif)
 
+添加公众号爬取任务和已经破去的公众号列表
+
+![1](readme_img/公众号.png)
+
 爬虫界面
+
+![](readme_img/caiji.png)
 
 设置界面
 
+![ ](readme_img/设置.png)
+
 文章列表
+
+
 
 报告
 
